@@ -23,6 +23,16 @@ Kirigami.Page {
     rightPadding: 0
     bottomPadding: 0
 
+    Kirigami.PromptDialog {
+        property file any
+
+        id: deleteFileDialog
+        title: i18nc("@window:title", "Delete permanently")
+        standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+ 
+        onAccepted: ContextMenuContext.deleteFile(file)
+    }
+
     Kirigami.Action {
         id: goToOverviewAction
         enabled: page.state === ""

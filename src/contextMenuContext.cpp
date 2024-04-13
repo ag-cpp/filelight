@@ -77,10 +77,6 @@ void ContextMenuContext::deleteFile(const std::shared_ptr<File> &file)
     const auto url = file->url();
     const auto isFolder = file->isFolder();
 
-    if (!shouldDelete(url, isFolder)) {
-        return;
-    }
-
     auto job = KIO::del(url);
     connect(job, &KJob::finished, this, [this, url, job, file] {
         QGuiApplication::restoreOverrideCursor();
